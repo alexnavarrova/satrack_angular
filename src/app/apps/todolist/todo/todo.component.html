@@ -1,0 +1,31 @@
+<div class="w-full h-full">
+
+  <div class="relative flex h-full gap-5 sm:h-[calc(100vh_-_10px)] ">
+    <div
+      class="panel absolute z-10 hidden h-full w-[240px] max-w-full flex-none space-y-4 p-4 ltr:rounded-r-none rtl:rounded-l-none xl:relative xl:block xl:h-auto ltr:xl:rounded-r-md rtl:xl:rounded-l-md"
+      [ngClass]="{ '!block': isShowTaskMenu }"
+    >
+      <app-sidebar (onSetIsShowLoading)="onSetIsShowTaskMenu()"  />
+    </div>
+    <div
+      class="overlay absolute z-[5] hidden h-full w-full rounded-md bg-black/60"
+      [ngClass]="{ '!block xl:!hidden': isShowTaskMenu }"
+      (click)="isShowTaskMenu = !isShowTaskMenu"
+    ></div>
+
+    <div class="w-full">
+      <div class="panel h-full flex-1 overflow-auto p-0">
+        <div class="flex h-full flex-col">
+
+          <app-task-header  (onSetIsShowLoading)="onSetIsShowTaskMenu()"  />
+
+          <app-task-list />
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,44 @@
+<h1 mat-dialog-title> Create Category</h1>
+<div mat-dialog-content>
+  <form [formGroup]="myGroup" class="text-sm" (submit)="submit()">
+    <div class="mb-5">
+      <label for="title">Title</label>
+      <input id="title" type="text" placeholder="Enter Task Title" class="form-input" formControlName="title" />
+    </div>
+    <div class="mb-5 flex justify-between gap-4">
+        <div class="flex-1">
+            <label for="categoryId">Categoria</label>
+            <select id="categoryId" class="form-select" formControlName="categoryId" >
+                <option value="0">Select Category</option>
+                <option *ngFor="let category of categories$ | async" [value]="category.id">{{ category.name }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="mb-5">
+      <label for="dueDate">Due Date</label>
+      <input
+        id="dueDate"
+        type="date"
+        name="dueDate"
+        class="w-full"
+        formControlName="dueDate"
+      />
+    </div>
+    <div class="mb-5">
+        <label for="description">Description</label>
+        <quill-editor
+            for="description"
+            #quillEditorObj
+            [modules]="editorOptions"
+            placeholder=""
+            formControlName="description"
+            class="w-full"
+        ></quill-editor>
+    </div>
+
+    <div class="mt-8 flex items-center justify-end ltr:text-right rtl:text-left">
+      <button type="button" class="btn btn-outline-danger" (click)="onCancel()">Cancel</button>
+      <button type="submit" class="btn btn-primary ltr:ml-4 rtl:mr-4">Submit</button>
+    </div>
+  </form>
+</div>

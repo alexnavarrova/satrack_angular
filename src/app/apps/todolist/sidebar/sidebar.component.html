@@ -1,0 +1,44 @@
+<div class="flex h-full flex-col pb-16">
+  <div class="pb-5">
+    <div class="flex items-center text-center">
+        <div class="shrink-0">
+            <icon-clipboard-text />
+        </div>
+        <h3 class="text-lg font-semibold ltr:ml-3 rtl:mr-3 ml-2">Todo list</h3>
+    </div>
+  </div>
+  <div class="mb-5 h-px w-full border-b border-[#e0e6ed] dark:border-[#1b2e4b]"></div>
+    <ng-scrollbar class="relative h-full grow ltr:pr-3.5 rtl:pl-3.5" appearance="compact">
+      <div class="space-y-1">
+        <div class=" p-2 ltr:left-0 rtl:right-0">
+          <button class="btn btn-primary w-full" type="button" (click)="addCategory()">
+              <icon-plus class="shrink-0 ltr:mr-2 rtl:ml-2" />
+              Add Category
+          </button>
+        </div>
+        <div *ngFor="let category of categories$ | async">
+          <button
+            type="button"
+            class="flex h-10 w-full items-center justify-between rounded-md p-2 font-medium hover:bg-white-dark/10 hover:text-primary dark:hover:bg-[#181F32] dark:hover:text-primary"
+            [ngClass]="{ 'bg-gray-100 dark:text-primary text-primary dark:bg-[#181F32]': selectedTab === category.id}"
+            (click)="tabChanged(category.id)"
+        >
+            <div class="flex items-center">
+                <icon-list-check class="h-4.5 w-4.5 shrink-0" />
+                <div class="ltr:ml-3 rtl:mr-3">{{ category.name }}</div>
+            </div>
+
+          </button>
+        </div>
+
+          <div class="h-px w-full border-b border-[#e0e6ed] dark:border-[#1b2e4b]"></div>
+
+      </div>
+    </ng-scrollbar>
+    <div class="absolute bottom-0 p-2 ltr:left-0 rtl:right-0">
+      <button class="btn btn-primary w-full" type="button" (click)="addEditTask()">
+          <icon-plus class="shrink-0 ltr:mr-2 rtl:ml-2" />
+          Add New Task
+      </button>
+    </div>
+</div>

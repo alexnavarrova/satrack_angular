@@ -1,0 +1,14 @@
+<h1 mat-dialog-title> Create Category</h1>
+<div mat-dialog-content>
+  <form [formGroup]="myGroup" class="text-sm" (submit)="submit()">
+    <div class="mb-5">
+      <label for="name">Title</label>
+      <input id="name" type="text" placeholder="Enter Category Name" class="form-input" formControlName="name" />
+    </div>
+    <div class="mt-8 flex items-center justify-end ltr:text-right rtl:text-left">
+      <button type="button" class="btn btn-outline-danger" (click)="onCancel()">Cancel</button>
+      <button type="submit" class="btn btn-primary ltr:ml-4 rtl:mr-4">add</button>
+  </div>
+  </form>
+</div>
+
